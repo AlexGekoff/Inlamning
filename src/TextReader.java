@@ -3,32 +3,27 @@ import java.util.Scanner; // Importerar klassen Scanner för att läsa indata fr
 public class TextReader {
     public static void main(String[] args) {
 
-        // Skapar ett Scanner-objekt för att läsa indata från kommandoraden
-        Scanner scanner = new Scanner(System.in);
 
-        // Skapar en StringBuilder för att lagra all text som användaren skriver in
-        StringBuilder allText = new StringBuilder();
+        Scanner scanner = new Scanner(System.in);                                          // Skapar ett Scanner-objekt för att läsa indata från kommandoraden
+        TextAnalysMain textAnalysMain = new TextAnalysMain();                              // Skapar ett TextAnalysMain-objekt för analys
+        StringBuilder allText = new StringBuilder();                                       // Skapar en StringBuilder för att lagra all text som användaren skriver in
+        System.out.println("Skriv in text rad för rad (skriv 'stop' för att avsluta):");   // Meddelande till användaren om hur programmet fungerar
 
-        // Meddelande till användaren om hur programmet fungerar
-        System.out.println("Skriv in text rad för rad (skriv 'stop' för att avsluta):");
 
-        // Startar en oändlig loop för att läsa in text rad för rad
-        while (true) {
+        while (true) {                                                                     // Startar en oändlig loop för att läsa in text rad för rad
+            String text = scanner.nextLine();                                              // Läser nästa rad från användaren
 
-            // Läser nästa rad från användaren
-            String text = scanner.nextLine();
-
-            // Kontrollerar om användaren har skrivit "stop" (oavsett stora eller små bokstäver)
-            if (text.equalsIgnoreCase("stop")) {
-                break; // Avslutar loopen om "stop" skrivs
+            if (text.equalsIgnoreCase("stop")) {                               // Kontrollerar om användaren har skrivit "stop" (oavsett stora eller små bokstäver)
+                break;                                                                     // Avslutar loopen om "stop" skrivs
             }
 
-            // Lägg till raden och ett mellanslag istället för en ny rad
-            allText.append(text).append(" ");
-        }
-            //Skriva ut resultatet och trimma för att ta bort sista mellanslaget
-        System.out.println("Du har skrivit: " + allText.toString().trim());
+            allText.append(text).append(" ");                                              // Lägg till raden och ett mellanslag istället för en ny rad
+            textAnalysMain.addLine(text);                                                  // Uppdaterar antal tecken och rader i analysen
 
+        }
+        System.out.println("Du har skrivit: " + allText.toString().trim());                //Skriva ut resultatet och trimma för att ta bort sista mellanslaget
+        System.out.println("Antal tecken (exklusive 'stop'): " + textAnalysMain.getTotalCharacters());
+        System.out.println("Antal rader (exklusive 'stop'): " + textAnalysMain.getLineCount());
     }
 }
 
