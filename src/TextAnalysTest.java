@@ -24,7 +24,15 @@ public class TextAnalysTest {
 
         assertEquals(3, textAnalysMain.getLineCount());
 
+    }
 
+    @Test
+    void testEmptyLine() {
+        TextAnalysMain textAnalysMain = new TextAnalysMain();
+        textAnalysMain.addLine(""); // Lägger till en tom rad
+
+        assertEquals(0, textAnalysMain.getTotalCharacters(), "Tom rad borde inte lägga till några tecken");
+        assertEquals(1, textAnalysMain.getLineCount(), "Tom rad borde ändå räknas som en rad");
     }
 
 
