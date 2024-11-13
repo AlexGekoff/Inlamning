@@ -13,13 +13,11 @@ public class TextReader {
         while (true) {                                                                     // Startar en oändlig loop för att läsa in text rad för rad
             String text = scanner.nextLine();                                              // Läser nästa rad från användaren
 
-            if (text.equalsIgnoreCase("stop")) {                               // Kontrollerar om användaren har skrivit "stop" (oavsett stora eller små bokstäver)
+            if (!textAnalysMain.processLine(text)) {
                 break;                                                                     // Avslutar loopen om "stop" skrivs
             }
 
             allText.append(text).append(" ");                                              // Lägg till raden och ett mellanslag istället för en ny rad
-            textAnalysMain.addLine(text);                                                  // Uppdaterar antal tecken och rader i analysen
-
         }
         System.out.println("Du har skrivit: " + allText.toString().trim());                //Skriva ut resultatet och trimma för att ta bort sista mellanslaget
         System.out.println("Antal tecken (exklusive 'stop'): " + textAnalysMain.getTotalCharacters());

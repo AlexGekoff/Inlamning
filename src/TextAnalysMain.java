@@ -1,7 +1,7 @@
 public class TextAnalysMain {
-    private int totalCharacters; // För att hålla koll på totalt antal tecken
-    private int lineCount; // För att hålla koll på antal rader
-    private int wordCount; // Räknar totala antalet ord
+    private int totalCharacters;                                  // För att hålla koll på totalt antal tecken
+    private int lineCount;                                        // För att hålla koll på antal rader
+    private int wordCount;                                        // Räknar totala antalet ord
     private String longestWord = "";
 
     // Konstruktor som sätter startvärden
@@ -11,6 +11,15 @@ public class TextAnalysMain {
 
     }
 
+    // Metod som bearbetar en rad, returnerar false om raden är "stop"
+    public boolean processLine(String line) {
+        if (line.equalsIgnoreCase("stop")) {            // Kontrollera om användaren skrev "stop"
+            return false;                                           // Returnera false för att avsluta
+        }
+
+        addLine(line);                                             // Uppdatera analysdata om raden inte är "stop"
+        return true;                                               // Fortsätt om raden inte är "stop"
+    }
     // Metod för att lägga till en rad och uppdatera analysen
     public void addLine(String line) {
         totalCharacters += line.length(); // Ökar totalt antal tecken med längden av raden
