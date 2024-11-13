@@ -24,6 +24,7 @@ public class TextReader {
         System.out.println("Du har skrivit: " + allText.toString().trim());                //Skriva ut resultatet och trimma för att ta bort sista mellanslaget
         System.out.println("Antal tecken (exklusive 'stop'): " + textAnalysMain.getTotalCharacters());
         System.out.println("Antal rader (exklusive 'stop'): " + textAnalysMain.getLineCount());
+        System.out.println("Antal ord (exklusive 'stop'): " + textAnalysMain.getWordCount()); //Skriver ut antal ord
     }
 }
 
