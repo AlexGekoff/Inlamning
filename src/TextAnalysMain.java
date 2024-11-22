@@ -8,7 +8,7 @@ public class TextAnalysMain {
     public TextAnalysMain() {
         this.totalCharacters = 0;
         this.lineCount = 0;
-
+        this.wordCount = 0;
     }
 
     // Metod som bearbetar en rad, returnerar false om raden är "stop"
@@ -20,6 +20,7 @@ public class TextAnalysMain {
         addLine(line);                                             // Uppdatera analysdata om raden inte är "stop"
         return true;                                               // Fortsätt om raden inte är "stop"
     }
+
     // Metod för att lägga till en rad och uppdatera analysen
     public void addLine(String line) {
         totalCharacters += line.length(); // Ökar totalt antal tecken med längden av raden
